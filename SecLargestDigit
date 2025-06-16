@@ -1,0 +1,35 @@
+class Solution {
+    public int secondHighest(String s) {
+
+        HashSet<Integer> nums = new HashSet<Integer>();
+
+        for(char c :s.toCharArray()){
+            if(Character.isDigit(c)){
+                nums.add(Character.getNumericValue(c));
+            }
+
+        }
+
+        if(nums.size() <2){ //the number of unique elements in the set use Set
+            return -1;
+        }
+
+            int largest = Integer.MIN_VALUE;
+            int second = Integer.MIN_VALUE;
+
+            for(int num : nums ){
+               if(num > largest){
+                second = largest;
+                largest = num;
+               }
+               else if(num > second && num != largest){
+                second = num;
+               }
+
+            }
+
+            return second;
+     
+        }
+  
+    }
